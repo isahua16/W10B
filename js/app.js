@@ -29,15 +29,19 @@ service_description[2].insertAdjacentHTML(`beforebegin`, `<h3>E-Commerce Develop
 page_title.insertAdjacentHTML(`afterbegin`, `<h1>W10B</>`)
 
 
-//This function takes a valid css selector as a string, and will check if the elements are long enough. If they are less than 30 characters, the function will replace the content with `NOT ENOUGH`
+//This function takes a valid css selector as a string as an argument (sel)
 function short_text_alert(sel)
 {
+    // I store the elements from the page in elements using the argument variable sel(the given selector)
     let elements = document.querySelectorAll(sel);
     for(let i = 0; i < elements.length; i++)
     {
+        //Elements is an array of objects which means I can loop over it. For each iteration, we check the object's innerHTML value (a string (which is also an array)) against the conditional below
         if(elements[i].innerHTML.length < 30)
         {
+            // If the innerHTML is less than 30 characters, replace the innerHTML by `NOT ENOUGH`
             elements[i].innerHTML = `NOT ENOUGH`;
+
         }
     }
 }
@@ -47,19 +51,23 @@ short_text_alert(`.service_description`);
 // This function takes an array of valid css selectors as strings as arguments
 function insert_happy_tag(selector_array)
 {
+    //I initialize an empty array here so that I can reassign its value inside the loops below 
     let elements = [];
     for(let i = 0; i < selector_array.length; i++ )
     {  
+        //I store the array of objects from the HTML with the selector which has an unknown number of elements
         elements = document.querySelectorAll(selector_array[i]);
         
         for(let i = 0; i < elements.length; i++)
         {
+            // I loop over this array and check if each element's innerHTML (which is a string) includes the word `happy`.
             if(elements[i].innerHTML.includes(`happy`) === true)
             {
+                //If it does, I insert an h2 tag as the last child of that element
                 elements[i].insertAdjacentHTML(`beforeend`, `<h2> HAPPY TAG ABOVE</h2>`)
+                //When done looping over this inner array, the code will go back to the outer loop and do the whole process again
             }
-        }
-       
+        }      
     }
 }
 
