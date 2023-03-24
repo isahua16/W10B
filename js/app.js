@@ -29,3 +29,17 @@ service_description[2].insertAdjacentHTML(`beforebegin`, `<h3>E-Commerce Develop
 page_title.insertAdjacentHTML(`afterbegin`, `<h1>W10B</>`)
 
 
+//This function takes a valid css selector as a string, and will check if the elements are long enough. If they are less than 30 characters, the function will replace the content with `NOT ENOUGH`
+function short_text_alert(sel)
+{
+    let elements = document.querySelectorAll(sel);
+    for(let i = 0; i < elements.length; i++)
+    {
+        if(elements[i].innerHTML.length < 30)
+        {
+            elements[i].innerHTML = `NOT ENOUGH`;
+        }
+    }
+}
+
+short_text_alert(`.service_description`);
