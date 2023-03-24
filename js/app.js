@@ -12,7 +12,7 @@ for(let i = 0; i < founder_names.length; i++)
 {
     if (founder_names[i].innerHTML === `John Smith`)
     {
-        founder_names[i].innerHTML = `Kurt Cobain`;
+        founder_names[i].innerHTML = `happy Feet`;
     }
     else if (founder_names[i].innerHTML === `Jane Doe`)
     {
@@ -43,3 +43,25 @@ function short_text_alert(sel)
 }
 
 short_text_alert(`.service_description`);
+
+// This function takes an array of valid css selectors as strings as arguments
+function insert_happy_tag(selector_array)
+{
+    let elements = [];
+    for(let i = 0; i < selector_array.length; i++ )
+    {  
+        elements = document.querySelectorAll(selector_array[i]);
+        
+        for(let i = 0; i < elements.length; i++)
+        {
+            if(elements[i].innerHTML.includes(`happy`) === true)
+            {
+                elements[i].insertAdjacentHTML(`beforeend`, `<h2> HAPPY TAG ABOVE</h2>`)
+            }
+        }
+       
+    }
+}
+
+let happy = insert_happy_tag([`p`, `h3`]);
+
